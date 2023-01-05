@@ -18,5 +18,17 @@ const averageScore =
   students.reduce((scoresTotal, student) => {
     return scoresTotal + student.score;
   }, 0) / students.length;
+// console.log(averageScore);
 
-console.log(averageScore);
+// list favorite subjects with reduce
+const survey = students.reduce((survey, student) => {
+  const favorite = student.favoriteSubject;
+  if (survey[favorite]) {
+    survey[favorite]++;
+  } else {
+    survey[favorite] = 1;
+  }
+  return survey;
+}, {});
+
+console.log(survey);
