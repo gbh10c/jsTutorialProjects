@@ -30,5 +30,39 @@ const survey = students.reduce((survey, student) => {
   }
   return survey;
 }, {});
+// console.log(survey);
 
-console.log(survey);
+const months = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
+
+const days = [
+  'Sunday',
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday',
+];
+
+const date = new Date();
+const day = date.getDay();
+const month = date.getMonth();
+const number = date.getDate();
+const year = date.getFullYear();
+
+const sentence = `Today is ${days[day]}, ${months[month]} ${number}, ${year}.`;
+
+document.body.innerHTML = `<h1>${sentence}</ h1>`;
