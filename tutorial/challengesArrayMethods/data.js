@@ -5,3 +5,4 @@ const students = [
   { id: 4, name: 'eddy', score: 80, favoriteSubject: 'art' },
   { id: 5, name: 'jacob', score: 95, favoriteSubject: 'math' },
 ];
+
