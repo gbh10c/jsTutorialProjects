@@ -1,8 +1,8 @@
 const people = [
-  { name: 'bob', age: 20, position: 'developer' },
-  { name: 'peter', age: 25, position: 'designer' },
-  { name: 'susy', age: 30, position: 'assistant boss' },
-  { name: 'anna', age: 35, position: 'boss' },
+  { name: 'bob', age: 20, position: 'developer', id: 1 },
+  { name: 'peter', age: 25, position: 'designer', id: 2 },
+  { name: 'susy', age: 30, position: 'assistant boss', id: 3 },
+  { name: 'anna', age: 35, position: 'boss', id: 4 },
 ];
 
 // forEach
@@ -38,12 +38,33 @@ const people = [
 // CAN manipulate the size of new array
 // returns based on condition
 
-const youngPeople = people.filter((person) => {
-  return person.age < 30;
+// const youngPeople = people.filter((person) => {
+//   return person.age < 30;
+// });
+
+// const developers = people.filter((person) => {
+//   return person.position === 'developer';
+// });
+
+// console.log(developers);
+
+// find
+// returns a single instance (an object, here)
+// returns first match, if no match undefined
+// great for getting unique value
+
+const person = people.find((person) => {
+  return person.id === 3;
 });
 
-const developers = people.filter((person) => {
-  return person.position === 'developer';
+console.log(person);
+console.log(person.name);
+
+// find returns a string in this instance
+const names = ['bob', 'peter', 'susy', 'anna'];
+
+const firstName = names.find((name) => {
+  return name === 'anna';
 });
 
-console.log(developers);
+console.log(firstName);
