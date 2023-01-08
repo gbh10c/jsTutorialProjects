@@ -1,19 +1,11 @@
 const number = document.getElementById('value');
-const decreaseBtn = document.querySelector('.decrease');
-const resetBtn = document.querySelector('.reset');
-const increaseBtn = document.querySelector('.increase');
+const button = document.querySelector('.button-container');
 
 let counter = 0;
 
-decreaseBtn.addEventListener('click', () => {
-  counter--;
-  number.textContent = counter;
-});
-resetBtn.addEventListener('click', () => {
-  counter = 0;
-  number.textContent = counter;
-});
-increaseBtn.addEventListener('click', () => {
-  counter++;
+button.addEventListener('click', (e) => {
+  if (e.target.classList.contains('increase')) counter++;
+  if (e.target.classList.contains('decrease')) counter--;
+  if (e.target.classList.contains('reset')) counter = 0;
   number.textContent = counter;
 });
