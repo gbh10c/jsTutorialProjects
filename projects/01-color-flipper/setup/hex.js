@@ -3,13 +3,12 @@ const btn = document.getElementById('btn');
 const color = document.querySelector('.color');
 
 btn.addEventListener('click', () => {
-  let hexArray = [];
+  let hexColor = '#';
   for (let i = 0; i < 6; i++) {
     const randomNumber = getRandomNumber();
-    hexArray.push(hex[randomNumber]);
+    hexColor += hex[randomNumber];
   }
-  let hexColor = `#${hexArray.join('')}`;
-  
+
   document.body.style.backgroundColor = hexColor;
   color.textContent = hexColor;
 });
