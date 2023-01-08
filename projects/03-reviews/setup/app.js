@@ -44,34 +44,28 @@ let currentItem = 0;
 
 // load initial item
 window.addEventListener('DOMContentLoaded', () => {
-  loadReview();
+  loadReview(currentItem);
 });
 
 prevBtn.addEventListener('click', () => {
-  if (currentItem === 0) {
-    currentItem = reviews.length - 1;
-  } else {
-    currentItem--;
-  }
-  loadReview();
+  currentItem--;
+  if (currentItem < 0) currentItem = reviews.length - 1;
+  loadReview(currentItem);
 });
 
 nextBtn.addEventListener('click', () => {
-  if (currentItem === reviews.length - 1) {
-    currentItem = 0;
-  } else {
-    currentItem++;
-  }
-  loadReview();
+  currentItem++;
+  if (currentItem === reviews.length) currentItem = 0;
+  loadReview(currentItem);
 });
 
 randomBtn.addEventListener('click', () => {
   currentItem = Math.floor(Math.random() * reviews.length);
-  loadReview();
+  loadReview(currentItem);
 });
 
-function loadReview() {
-  const item = reviews[currentItem];
+function loadReview(person) {
+  const item = reviews[person];
   image.src = item.img;
   author.textContent = item.name;
   job.textContent = item.job;
