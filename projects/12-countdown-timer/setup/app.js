@@ -26,7 +26,16 @@ const giveaway = document.querySelector('.giveaway');
 const deadline = document.querySelector('.deadline');
 const items = document.querySelectorAll('.deadline-format h4');
 
-let futureDate = new Date(2023, 0, 12, 10, 00, 0);
+// set up deadline so countdown is always functional for demonstration purposes 10 days in the future
+let tempDate = new Date();
+let tempYear = tempDate.getFullYear();
+let tempMonth = tempDate.getMonth();
+let tempDay = tempDate.getDate();
+
+const futureDate = new Date(tempYear, tempMonth, tempDay + 10, 10, 30, 0);
+
+// code to set specific date for deadline
+// let futureDate = new Date(2023, 0, 12, 10, 30, 0);
 
 const year = futureDate.getFullYear();
 const hours = futureDate.getHours();
