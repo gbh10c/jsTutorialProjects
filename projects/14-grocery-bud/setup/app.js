@@ -15,6 +15,8 @@ let editId = '';
 // ****** EVENT LISTENERS **********
 // submit form
 form.addEventListener('submit', addItem);
+// clear items
+clearBtn.addEventListener('click', clearItems);
 
 // ****** FUNCTIONS **********
 function addItem(e) {
@@ -40,6 +42,11 @@ function addItem(e) {
           </button>
         </div>
     `;
+    // select newly created delete and edit buttons
+    const deleteBtn = element.querySelector('.delete-btn');
+    const editBtn = element.querySelector('.edit-btn');
+    deleteBtn.addEventListener('click', deleteItem);
+    editBtn.addEventListener('click', editItem);
     // append child
     list.appendChild(element);
     // display alert
@@ -51,7 +58,11 @@ function addItem(e) {
     // set back to default
     setBackToDefault();
   } else if (value && editFlag) {
-    console.log('editing');
+    editElement.innerHTML = value;
+    displayAlert('value updated', 'success');
+    // edit local storage
+    // editLocalStorage(editID, value);
+    setBackToDefault();
   } else {
     displayAlert('please enter a value', 'danger');
   }
@@ -66,16 +77,62 @@ function displayAlert(text, action) {
   setTimeout(() => {
     alert.textContent = '';
     alert.classList.remove(`alert-${action}`);
-  }, 2000);
+  }, 1000);
+}
+
+// clear items
+function clearItems() {
+  const items = document.querySelectorAll('.grocery-item');
+  if (items.length > 0) {
+    items.forEach((item) => {
+      list.removeChild(item);
+    });
+  }
+  container.classList.remove('show-container');
+  displayAlert('all items removed from list', 'danger');
+  setBackToDefault();
+  // localStorage.removeItem('list');
+}
+
+// delete function
+function deleteItem(e) {
+  const element = e.currentTarget.parentElement.parentElement;
+  const id = element.dataset.id;
+  list.removeChild(element);
+  if (list.children.length === 0) {
+    container.classList.remove('show-container');
+  }
+  displayAlert('item removed', 'danger');
+  setBackToDefault();
+  // remove from local storage
+  // removeFromLocalStorage(id);
+}
+
+//edit function
+function editItem(e) {
+  const element = e.currentTarget.parentElement.parentElement;
+  // set edit item
+  editElement = e.currentTarget.parentElement.previousElementSibling;
+  // set form value
+  grocery.value = editElement.innerHTML;
+  editFlag = true;
+  editId = element.dataset.id;
+  submitBtn.textContent = 'edit';
+  grocery.focus();
 }
 
 //set back to default
 function setBackToDefault() {
-  console.log('set back to default');
+  grocery.value = '';
+  editFlag = false;
+  editId = '';
+  submitBtn.textContent = 'submit';
 }
 
 // ****** LOCAL STORAGE **********
 function addToLocalStorage(id, value) {
-  console.log('added to local storage');
+  // console.log('added to local storage');
 }
+function removeFromLocalStorage(id) {}
+function editLocalStorage(id, value) {}
 // ****** SETUP ITEMS **********
