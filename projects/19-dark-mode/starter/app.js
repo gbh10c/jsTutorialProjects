@@ -8,11 +8,12 @@ toggleBtn.addEventListener('click', () => {
 const articlesData = articles
   .map((article) => {
     const { title, date, length, snippet } = article;
+    const formatDate = dayjs(date).format('MMMM D, YYYY');
 
     return `<article class="post">
           <h2>${title}</h2>
           <div class="post-info">
-            <span>${date}</span>
+            <span>${formatDate}</span>
             <span>${length} min read</span>
           </div>
           <p>
