@@ -1,14 +1,15 @@
-// getElementById
+const first = document.querySelector('.first');
+const idValue = first.getAttribute('id');
+// console.log(idValue);
 
-// const h1 = document.getElementById('title');
-// h1.style.color = 'red';
+const link = document.getElementById('link');
+const showLink = link.getAttribute('href');
+// console.log(showLink);
 
-// document.getElementById('btn').style.backgroundColor = 'blue';
-// document.getElementById('btn').style.color = 'white';
+const last = link.nextElementSibling;
+last.setAttribute('class', 'first');
+last.textContent = 'i also have a class of first';
+// console.log(last);
 
-// const btn = document.getElementById('btn');
-
-// btn.style.backgroundColor = 'blue';
-// btn.style.color = 'white';
-
-
+const links = document.querySelectorAll('.first');
+console.log(links);
