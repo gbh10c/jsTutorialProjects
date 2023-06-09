@@ -3,9 +3,13 @@ const url = './api/people.json';
 const btn = document.querySelector('.btn');
 
 btn.addEventListener('click', async () => {
-  const response = await fetch(url);
-  const data = await response.json();
-  displayItems(data);
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    displayItems(data);
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 const displayItems = (items) => {
